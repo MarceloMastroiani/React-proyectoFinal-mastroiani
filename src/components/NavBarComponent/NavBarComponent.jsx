@@ -10,7 +10,7 @@ const NavBarComponent = () => {
   return (
     <Navbar expand="lg" className="nav">
       <Container>
-        <Navbar.Brand href="#inicio" className='brand'>Marcelo <FontAwesomeIcon icon={faShirt} style={{color: "#000000",}} /> Mastroiani</Navbar.Brand>
+        <Navbar.Brand href="#inicio" className='brand'> Tienda Mastroiani</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
