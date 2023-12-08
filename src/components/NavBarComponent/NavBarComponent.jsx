@@ -1,45 +1,29 @@
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
-import CartWidgetComponent from '../CartWidgetComponent/CartWidgetComponent'
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
+import NavDropdown from "react-bootstrap/NavDropdown";
+import CartWidgetComponent from "../CartWidgetComponent/CartWidgetComponent";
 
-import { Link } from 'react-router-dom';
-import { useEffect, useState } from "react";
-import axios from "axios";
+import { Link } from "react-router-dom";
 
-const NavBarComponent = () => {
-  const [categories, setCategories] = useState([]);
-  
-  useEffect(() => {
-    axios
-    .get('https://dummyjson.com/products/categories')
-    .then(res => setCategories(res.data))
-    .catch((error) => console.log(error));
-  }, []);
-  
+export const NavBarComponent = () => {
   return (
-    
-    <Navbar expand="lg" className="nav">
+    <Navbar expand="lg" className="bg-body-tertiary">
       <Container>
-        <Navbar.Brand><Link to={"/"} className='brand'>Tienda Mastroiani</Link></Navbar.Brand>
+        <Navbar.Brand href="#home">Tienda Daniel</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <NavDropdown title="Categorias" id="basic-nav-dropdown">
-              {categories.map((category, index) => {
-                  return(
-                    <NavDropdown.Item Key={index}>
-                    <Link
-                   to={`/category/${category}`}
-                   style={{textDecoration: "none", color: "#360b41"}}
-                   >
-                    {category}
-                   </Link>
-                   </NavDropdown.Item>
-                  )
-                })
-              }
+            {/* <Nav.Link href="/">Home</Nav.Link> */}
+            <Link to="/">Home</Link>
+            <Link to="#link">Productos</Link>
+            <NavDropdown title="Categorías" id="basic-nav-dropdown">
+              <NavDropdown.Item href="#action/3.1">
+                <Link to={"/category/laptops"}>Laptops</Link>
+              </NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.2">
+                <Link to={"/category/smartphones"}>Smartphones</Link>
+              </NavDropdown.Item>
             </NavDropdown>
           </Nav>
           <CartWidgetComponent />
@@ -47,6 +31,4 @@ const NavBarComponent = () => {
       </Container>
     </Navbar>
   );
-}
-
-export default NavBarComponent;
+};
