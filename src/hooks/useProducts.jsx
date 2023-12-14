@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect } from "react";
-import { getDocs, getFirestore, collection, getDoc, doc, query, where} from "firebase/firestore";
+import { getDocs, getFirestore, collection, getDoc, doc, query, where,} from "firebase/firestore";
+
 
 export const useAllProducts = (limit) => {
   const [products, setProducts] = useState([]);

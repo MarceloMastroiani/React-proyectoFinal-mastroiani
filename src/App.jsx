@@ -8,6 +8,7 @@ import { CartProvider } from "./context";
 const App = () => {
   return (
     <div>
+ 
       <CartProvider>
         <MainRouter />
       </CartProvider>

@@ -1,7 +1,6 @@
 import React from "react";
-import { Button } from "react-bootstrap";
 import { AddItemButton } from "../AddItemButton";
-
+import "./ItemQuantity.css"
 export const ItemQuantitySelector = () => {
 
   const [quantity, setQuantity] = React.useState(1);
@@ -25,10 +24,12 @@ export const ItemQuantitySelector = () => {
   }
 
   return (
-    <div>
-      <Button onClick={handleSubstractProduct}>-</Button>
-      <input type="number" value={quantity} disabled/>
-      <Button onClick={handleAddProduct}>+</Button>
+    <div className="contador">
+      <div>
+        <button onClick={handleSubstractProduct}>-</button>
+        <span value={quantity} disabled>{quantity}</span>
+        <button onClick={handleAddProduct}>+</button>
+      </div>
       <AddItemButton quantity={quantity} handleResetQuantity={handleResetQuantity}/>
     </div>
   );

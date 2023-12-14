@@ -1,8 +1,7 @@
 import React from 'react'
-import { Button } from 'react-bootstrap'
 import { CartContext } from '../../context'
 
-export const AddItemButton = ({label = "Agregar al carrito", quantity, handleResetQuantity}) => {
+export const AddItemButton = ({label = "AGREGAR AL CARRITO", quantity, handleResetQuantity}) => {
 
   const { itemCount, setItemCount } = React.useContext(CartContext);
 
@@ -12,6 +11,6 @@ export const AddItemButton = ({label = "Agregar al carrito", quantity, handleRes
   }
 
   return (
-    <Button onClick={handleAddCart} style={{margin: '10px 0'}}>{label}</Button>
+    <button className='btnAgregar' onClick={handleAddCart} style={{margin: '10px 0'}}>{label}</button>
   )
 }
