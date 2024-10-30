@@ -1,17 +1,22 @@
-.nav{
-    background-color: #fafdea;
-  }
-.brand{
+.nav {
+  background-color: #fafdea;
+}
+.brand {
   text-decoration: none;
   color: rgb(35, 35, 35);
   font-size: 1.5rem;
   padding-right: 100px;
 }
+.Link {
+  text-decoration: none;
+  color: rgb(35, 35, 35);
+  transition: all 0.3s ease-in-out;
+}
 
-link{
+link {
   text-decoration: none;
 }
-a{
+a {
   text-decoration: none;
-  color:rgb(35, 35, 35); 
+  color: rgb(35, 35, 35);
 }

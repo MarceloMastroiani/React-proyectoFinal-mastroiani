@@ -3,15 +3,14 @@ import React from "react";
 import { Link, useParams } from "react-router-dom";
 
 export const ItemListContainer = ({ products }) => {
-
   return (
-    <div   style={{
-      display: "flex",
-      flexWrap: "wrap",
-      width: "100vw",
-      justifyContent: "space-around",
-    }}
-   
+    <div
+      style={{
+        display: "flex",
+        flexWrap: "wrap",
+        width: "100vw",
+        justifyContent: "space-around",
+      }}
     >
       {products.map((product) => {
         return (
@@ -22,6 +21,7 @@ export const ItemListContainer = ({ products }) => {
             <Card.Body>
               <Card.Title>{product.title}</Card.Title>
               <Card.Text>{product.description}</Card.Text>
+              <Card.Text>{product.price}</Card.Text>
             </Card.Body>
           </Card>
         );
