@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 
 export const NavBarComponent = () => {
   return (
-    <Navbar expand="lg" className="nav">
+    <Navbar className="nav">
       <Container>
         {/* Brand */}
         <Navbar.Brand className="brand" href="/">
@@ -30,7 +30,7 @@ export const NavBarComponent = () => {
                 <Link to={"/category/smartphones"}>Smartphones</Link>
               </NavDropdown.Item>
             </NavDropdown>
-              <Nav.Link href="/create">Crear producto</Nav.Link>
+            <Nav.Link href="/create">Crear producto</Nav.Link>
           </Nav>
 
           {/* Link to cart */}

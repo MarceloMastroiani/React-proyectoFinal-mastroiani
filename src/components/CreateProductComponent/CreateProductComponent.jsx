@@ -5,7 +5,9 @@ import { useState } from "react";
 import "./CreateProduct.css";
 
 export const CreateProductComponent = () => {
+  //hook para registrar el formulario
   const { register, handleSubmit } = useForm();
+  //estado para guardar el thumbnail desde el input
   const [file, setFile] = useState(null);
 
   return (
@@ -28,6 +30,7 @@ export const CreateProductComponent = () => {
           };
           //se envia el nuevo producto a firebase
           await AddProduct(newProduct);
+          //TODOse redirecciona al home en caso de error
         } catch (error) {
           console.log(error);
         }
@@ -87,7 +90,7 @@ export const CreateProductComponent = () => {
         />
       </div>
 
-      <button> Agregar producto </button>
+      <button className="boton">Agregar producto</button>
     </form>
   );
 };

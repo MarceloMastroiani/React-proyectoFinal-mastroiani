@@ -31,9 +31,15 @@
   text-decoration: none;
 }
 
-button {
+.boton {
   background-color: rgb(51, 49, 49);
   color: #ffffff;
   width: auto;
   margin-top: 1rem;
+}
+
+.boton:hover {
+  transition: all 0.4s ease-in-out;
+  background-color: #fafdea;
+  color: #000000;
 }

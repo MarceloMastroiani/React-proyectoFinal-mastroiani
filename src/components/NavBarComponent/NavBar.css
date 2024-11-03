@@ -1,5 +1,8 @@
 .nav {
   background-color: #fafdea;
+  position: sticky;
+  top: 0;
+  z-index: 1;
 }
 .brand {
   text-decoration: none;

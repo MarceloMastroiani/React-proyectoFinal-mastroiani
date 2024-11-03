@@ -17,7 +17,7 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 export const storage = getStorage(app);
-const db = getFirestore();
+export const db = getFirestore();
 
 export async function UploadFile(file) {
   const storageRef = ref(storage, "productThumbnail/" + v4());
