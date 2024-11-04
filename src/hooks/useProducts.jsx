@@ -9,7 +9,7 @@ import {
   query,
   where,
 } from "firebase/firestore";
-import { getStorage } from "firebase/storage";
+import { DB } from "../firebase/config";
 
 export const useAllProducts = (limit) => {
   const [products, setProducts] = useState([]);
@@ -17,8 +17,8 @@ export const useAllProducts = (limit) => {
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    const db = getFirestore();
-    const collectionRef = collection(db, "products");
+    // const db = getFirestore();
+    const collectionRef = collection(DB, "products");
 
     getDocs(collectionRef)
       .then((res) => {
@@ -41,8 +41,8 @@ export const useSingleProduct = (id) => {
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    const db = getFirestore();
-    const docRef = doc(db, "products", id);
+    // const db = getFirestore();
+    const docRef = doc(DB, "products", id);
 
     getDoc(docRef)
       .then((res) => {
@@ -65,8 +65,8 @@ export const useAllProductsByFilter = (
   const [error, setError] = useState(false);
 
   useEffect(() => {
-    const db = getFirestore();
-    const collectionRef = collection(db, collectionName);
+    // const db = getFirestore();
+    const collectionRef = collection(DB, collectionName);
 
     const categoryQuery = query(
       collectionRef,
@@ -85,5 +85,28 @@ export const useAllProductsByFilter = (
       .finally(() => setLoading(false));
   }, [categoryId]);
 
+  return { products, loading, error };
+};
+
+export const useAllProductsByPrice = (limit) => {
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
+
+  useEffect(() => {
+    // const db = getFirestore();
+    const collectionRef = collection(DB, "products");
+
+    getDocs(collectionRef)
+      .then((res) => {
+        const data = res.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+        setProducts(data);
+      })
+      .catch(() => setError(true))
+      .finally(() => setLoading(false));
+  }, []);
   return { products, loading, error };
 };

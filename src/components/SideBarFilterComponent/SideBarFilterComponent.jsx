@@ -1,27 +1,30 @@
 import React from "react";
+import { useForm } from "react-hook-form";
 import "./SideBarFilter.css";
 
 export const SideBarComponent = () => {
   //TODO:agregar logica de filtro
+  const { register, handleSubmit } = useForm();
 
+  const onSubmit = (data) => {
+    console.log(data);
+  };
   return (
-    <div className="sidebar">
+    <form onSubmit={handleSubmit(onSubmit)} className="sidebar">
       <div className="divContainer">
-        <label htmlFor="menorPrecio">Menor Precio</label>
-        <input name="menorPrecio" type="checkbox" />
-      </div>
+        <select name="mayorMenorPrecio" {...register("mayorMenorPrecio")}>
+          <option value="order">Ordenar por</option>
+          <option value="menorPrecio">Menor Precio</option>
+          <option value="mayorPrecio">Mayor Precio</option>
+        </select>
 
-      <div className="divContainer">
-        <label htmlFor="mayorPrecio">Mayor Precio</label>
-        <input name="maorPrecio" type="checkbox" />
-      </div>
-
-      <div className="divContainer">
-        <select name="category">
-          <option value="laptops">laptops</option>
-          <option value="smartphones">smartphones</option>
+        <select name="categorys" {...register("categorys")}>
+          <option value="category">Categoría</option>
+          <option value="laptops">Laptops</option>
+          <option value="smartphones">Smartphones</option>
         </select>
       </div>
-    </div>
+      <button className="botonFiltro">Filtrar</button>
+    </form>
   );
 };

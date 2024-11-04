@@ -1,4 +1,8 @@
 .sidebar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: 200px;
   height: 100vh;
   position: fixed;
@@ -11,14 +15,27 @@
 }
 
 .divContainer {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: baseline;
-  padding-top: 1rem;
-  padding-left: 1rem;
+  padding-top: 2rem;
+
   color: #ffffff;
 }
-.divContainer input {
-  margin-left: 1rem;
+
+.divContainer select {
+  width: 75%;
+  margin-top: 1rem;
+  border-radius: 10px;
+  opacity: 0.8;
+}
+
+.botonFiltro {
+  color: rgb(35, 35, 35);
+  background-color: #fafdea;
+  margin-top: 5rem;
+  width: 50%;
+}
+
+.botonFiltro:hover {
+  background-color: rgb(35, 35, 35);
+  color: #fafdea;
+  transition: all 0.3s ease;
 }

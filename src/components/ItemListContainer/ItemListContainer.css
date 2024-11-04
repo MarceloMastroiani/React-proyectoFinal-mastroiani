@@ -9,6 +9,14 @@
   width: 18rem;
   margin: 20px;
   background-color: #fafdea;
+  border: 1px solid rgb(35, 35, 35);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.cardItem:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  opacity: 0.8;
+  transition: all 0.3s ease-in-out;
 }
 
 .cardImg {

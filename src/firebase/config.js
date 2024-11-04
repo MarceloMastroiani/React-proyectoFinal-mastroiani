@@ -1,8 +1,9 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
-import { collection, addDoc, getFirestore } from "firebase/firestore";
+import { collection, addDoc, getFirestore, getDocs } from "firebase/firestore";
 import { v4 } from "uuid";
+import { useAllProducts } from "../hooks/useProducts";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -17,7 +18,7 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 export const storage = getStorage(app);
-export const db = getFirestore();
+export const DB = getFirestore();
 
 export async function UploadFile(file) {
   const storageRef = ref(storage, "productThumbnail/" + v4());
@@ -27,5 +28,5 @@ export async function UploadFile(file) {
 }
 
 export async function AddProduct(newProduct) {
-  await addDoc(collection(db, "products"), newProduct);
+  await addDoc(collection(DB, "products"), newProduct);
 }
