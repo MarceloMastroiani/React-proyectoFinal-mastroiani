@@ -6,7 +6,7 @@ export const LoaderComponent = () => {
       style={{
         display: "flex",
         justifyContent: "center",
-        margin:"18%"
+        margin: "200px",
       }}
     >
       <l-helix size="70" speed="2.5" color="white"></l-helix>

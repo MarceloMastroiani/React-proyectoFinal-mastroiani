@@ -22,14 +22,6 @@ export const NavBarComponent = () => {
           <Nav className="me-auto">
             <Nav.Link href="/">Inicio</Nav.Link>
             <Nav.Link href="/">Productos</Nav.Link>
-            <NavDropdown title="Categorías" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">
-                <Link to={"/category/laptops"}>Laptops</Link>
-              </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">
-                <Link to={"/category/smartphones"}>Smartphones</Link>
-              </NavDropdown.Item>
-            </NavDropdown>
             <Nav.Link href="/create">Crear producto</Nav.Link>
           </Nav>
 

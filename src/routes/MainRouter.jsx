@@ -3,7 +3,6 @@ import { Home } from "../pages/Home";
 import { Cart } from "../pages/Cart";
 import { NavBarComponent } from "../components";
 import { ItemDetailContainer } from "../pages/ItemDetailContainer";
-import Category from "../pages/Category";
 import Create from "../pages/Create";
 
 export const MainRouter = () => {
@@ -13,7 +12,6 @@ export const MainRouter = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/item/:productId" element={<ItemDetailContainer />} />
-        <Route path="/category/:categoryId" element={<Category />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/create" element={<Create />} />
       </Routes>

@@ -3,7 +3,6 @@ import { initializeApp } from "firebase/app";
 import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { collection, addDoc, getFirestore, getDocs } from "firebase/firestore";
 import { v4 } from "uuid";
-import { useAllProducts } from "../hooks/useProducts";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
