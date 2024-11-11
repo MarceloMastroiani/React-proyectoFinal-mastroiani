@@ -1,20 +1,27 @@
 import Card from "react-bootstrap/Card";
-import React, { useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import "./ItemListContainer.css";
 import { LoaderComponent } from "../LoaderComponent/LoaderComponent";
+import { useAllProductsByFilter } from "../../hooks/useProducts";
 
-export const ItemListContainer = ({
-  product,
-  filterCategory,
-  productsCategorys,
-  loadingCategorys,
-  errorCategorys,
-}) => {
-  console.log(loadingCategorys);
+export const ItemListContainer = ({ dataCategory, product }) => {
+  const {
+    products: productsCategorys,
+    loading,
+    error: errorCategorys,
+    dataFilter,
+  } = useAllProductsByFilter("products", "category", dataCategory);
+
+  console.log(loading);
+
   return (
     <div className="container">
-      {filterCategory === "all" ? (
+      {loading ? (
+        <LoaderComponent />
+      ) : errorCategorys ? (
+        <div>Hubo un error</div>
+      ) : dataFilter === "all" ? (
         product.map((product) => {
           return (
             <Card className="cardItem" key={product.id}>
@@ -33,9 +40,7 @@ export const ItemListContainer = ({
             </Card>
           );
         })
-      ) : loadingCategorys ? (
-        <LoaderComponent />
-      ) : filterCategory === "laptops" || filterCategory === "smartphones" ? (
+      ) : dataFilter === "laptops" || dataFilter === "smartphones" ? (
         productsCategorys.map((product) => {
           return (
             <Card className="cardItem" key={product.id}>
@@ -54,8 +59,6 @@ export const ItemListContainer = ({
             </Card>
           );
         })
-      ) : errorCategorys ? (
-        <div>Hubo un error</div>
       ) : (
         <div>No hay productos para este filtro</div>
       )}

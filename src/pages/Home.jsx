@@ -1,19 +1,12 @@
-import { React, useState, useContext, useEffect } from "react";
+import { React, useState, useContext } from "react";
 import { ItemListContainer } from "../components";
 import { SideBarComponent } from "../components";
 import { ProductsContext } from "../context/ProductContext";
 import { LoaderComponent } from "../components";
-import { useAllProductsByFilter } from "../hooks/useProducts";
 
 export const Home = () => {
   const [dataCategory, setDataCategory] = useState("all");
-  const { products, loading, error } = useContext(ProductsContext);
-  const {
-    products: productsCategorys,
-    loading: loadingCategorys,
-    error: errorCategorys,
-    dataFilter,
-  } = useAllProductsByFilter("products", "category", dataCategory);
+  const { products } = useContext(ProductsContext);
 
   const sendFilters = (data) => {
     //Desestructurar data para poder pasarlo a useAllProductsByFilter
@@ -23,19 +16,7 @@ export const Home = () => {
 
   return (
     <div>
-      {loading ? (
-        <LoaderComponent />
-      ) : error ? (
-        <div>Hubo un error</div>
-      ) : (
-        <ItemListContainer
-          product={products}
-          filterCategory={dataFilter}
-          productsCategorys={productsCategorys}
-          loadingCategorys={loadingCategorys}
-          errorCategorys={errorCategorys}
-        />
-      )}
+      <ItemListContainer dataCategory={dataCategory} product={products} />
 
       <SideBarComponent sendFilters={sendFilters} />
     </div>

@@ -59,10 +59,11 @@ export const useAllProductsByFilter = (
 ) => {
   const [dataFilter, setDataFilter] = useState();
   const [products, setProducts] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(null);
   const [error, setError] = useState(false);
 
   useEffect(() => {
+    setLoading(true);
     const filterCategory = dataCategory;
     setDataFilter(filterCategory);
     // const db = getFirestore();
@@ -82,7 +83,9 @@ export const useAllProductsByFilter = (
         setProducts(data);
       })
       .catch(() => setError(true))
-      .finally(() => setLoading(false));
+      .finally(() => {
+        setLoading(false);
+      });
   }, [collectionName, fieldToFilter, dataCategory]);
   return { products, loading, error, dataFilter };
 };
