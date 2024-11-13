@@ -1,4 +1,5 @@
 export * from "./AddItemButton";
+export * from "./ButtonComponent";
 export * from "./CreateProductComponent";
 export * from "./CartWidgetComponent";
 export * from "./ItemDetailComponent";

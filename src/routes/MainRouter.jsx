@@ -10,7 +10,7 @@ export const MainRouter = () => {
     <BrowserRouter>
       <NavBarComponent />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/home" element={<Home />} />
         <Route path="/item/:productId" element={<ItemDetailContainer />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/create" element={<Create />} />

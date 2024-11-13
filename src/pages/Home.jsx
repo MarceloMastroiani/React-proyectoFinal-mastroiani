@@ -17,7 +17,6 @@ export const Home = () => {
   return (
     <div>
       <ItemListContainer dataCategory={dataCategory} product={products} />
-
       <SideBarComponent sendFilters={sendFilters} />
     </div>
   );

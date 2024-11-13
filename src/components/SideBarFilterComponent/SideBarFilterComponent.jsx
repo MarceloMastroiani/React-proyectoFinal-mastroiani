@@ -2,6 +2,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import "./SideBarFilter.css";
 import { useAllCategories } from "../../hooks/useProducts";
+import { ButtonComponent } from "../ButtonComponent";
 
 export const SideBarComponent = ({ sendFilters }) => {
   //Hook de react-hook-form para poder usar el select
@@ -16,6 +17,7 @@ export const SideBarComponent = ({ sendFilters }) => {
   };
   return (
     <form onSubmit={handleSubmit(filterData)} className="sidebar">
+      <ButtonComponent text={"create"} />
       <div className="divContainer">
         <select name="mayorMenorPrecio" {...register("mayorMenorPrecio")}>
           <option value="order">Ordenar por</option>
