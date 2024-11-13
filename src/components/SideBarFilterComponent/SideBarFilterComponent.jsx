@@ -1,11 +1,16 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import "./SideBarFilter.css";
+import { useAllCategories } from "../../hooks/useProducts";
 
 export const SideBarComponent = ({ sendFilters }) => {
-  //TODO:agregar logica de filtro
+  //Hook de react-hook-form para poder usar el select
   const { register, handleSubmit } = useForm();
+  //Custom hook para obtener las categorias y poder agregarlas en el select
+  const { categories, error } = useAllCategories();
 
+  //Función que se ejecuta cuando se envía el formulario
+  //Esta función manda los datos al componente padre (/src/pages/Home.jsx)
   const filterData = (data) => {
     sendFilters(data);
   };
@@ -18,10 +23,18 @@ export const SideBarComponent = ({ sendFilters }) => {
           <option value="mayorPrecio">Mayor Precio</option>
         </select>
 
+        {/* Ahota se puede agregar las categorias que se deseen, estas se mostrarán en el select */}
         <select name="categorys" {...register("categorys")}>
           <option value="all">Categoría</option>
-          <option value="laptops">Laptops</option>
-          <option value="smartphones">Smartphones</option>
+          {error ? (
+            <div>Hubo un error</div>
+          ) : (
+            categories.map((category) => (
+              <option value={category} key={category}>
+                {`${category}`}
+              </option>
+            ))
+          )}
         </select>
       </div>
       <button className="botonFiltro">Filtrar</button>

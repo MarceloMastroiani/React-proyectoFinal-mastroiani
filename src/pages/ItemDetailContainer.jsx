@@ -1,9 +1,10 @@
 import React from "react";
-import Card from "react-bootstrap/Card";
 
 import { useParams } from "react-router-dom";
 import { useSingleProduct } from "../hooks/useProducts";
-import { ItemQuantitySelector } from "../components";
+
+import { LoaderComponent } from "../components";
+import { ItemDetailComponent } from "../components";
 
 export const ItemDetailContainer = () => {
   const { productId } = useParams();
@@ -11,13 +12,14 @@ export const ItemDetailContainer = () => {
   const { product, loading, error } = useSingleProduct(productId);
 
   return (
-    <Card key={product.id} style={{ width: "18rem", margin: 20 }}>
-      <Card.Img variant="top" src={product.thumbnail} />
-      <Card.Body>
-        <Card.Title>{product.title}</Card.Title>
-        <Card.Text>{product.description}</Card.Text>
-      </Card.Body>
-      <ItemQuantitySelector />
-    </Card>
+    <div>
+      {loading ? (
+        <LoaderComponent />
+      ) : error ? (
+        <div>Error</div>
+      ) : (
+        <ItemDetailComponent product={product} />
+      )}
+    </div>
   );
 };

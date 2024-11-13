@@ -2,21 +2,20 @@ import Card from "react-bootstrap/Card";
 import React from "react";
 import { Link } from "react-router-dom";
 import "./ItemListContainer.css";
-import { LoaderComponent } from "../LoaderComponent/LoaderComponent";
+import { LoaderComponent } from "../LoaderComponent";
 import { useAllProductsByFilter } from "../../hooks/useProducts";
 
 export const ItemListContainer = ({ dataCategory, product }) => {
   const {
-    products: productsCategorys,
+    products,
     loading,
     error: errorCategorys,
     dataFilter,
   } = useAllProductsByFilter("products", "category", dataCategory);
 
-  console.log(loading);
-
   return (
     <div className="container">
+      {/* El loading se setea en true para mostrar el componente y se setea en false cuando termina de cargar despues se verifica si hay error y si no se muestra el producto que se pasa por props */}
       {loading ? (
         <LoaderComponent />
       ) : errorCategorys ? (
@@ -40,8 +39,8 @@ export const ItemListContainer = ({ dataCategory, product }) => {
             </Card>
           );
         })
-      ) : dataFilter === "laptops" || dataFilter === "smartphones" ? (
-        productsCategorys.map((product) => {
+      ) : dataFilter !== "all" ? (
+        products.map((product) => {
           return (
             <Card className="cardItem" key={product.id}>
               <Link to={`/item/${product.id}`}>

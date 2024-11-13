@@ -1,0 +1,37 @@
+.containerDetail {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cardItemImage {
+  width: 18rem;
+  margin-top: 2rem;
+  margin: 2rem;
+}
+
+.cardItemDscription {
+  margin: 2rem;
+  width: 18rem;
+  height: 20rem;
+  background-color: #fafdea;
+}
+
+.cardProductTitle {
+  font-size: 1.5rem;
+  text-align: center;
+  /* fontSize: "1.5rem", textAlign: "center" */
+}
+
+.cardProductDescription {
+  font-size: 1rem;
+  text-align: center;
+  margin-top: 1.5rem;
+}
+
+.cardProductPrice {
+  font-size: 1.2rem;
+  text-align: center;
+  margin-top: 4.5rem;
+  background-color: #fafdea;
+}

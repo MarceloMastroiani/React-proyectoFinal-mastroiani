@@ -1,6 +1,7 @@
 export * from "./AddItemButton";
 export * from "./CreateProductComponent";
 export * from "./CartWidgetComponent";
+export * from "./ItemDetailComponent";
 export * from "./ItemListContainer";
 export * from "./ItemQuantitySelector";
 export * from "./NavBarComponent";

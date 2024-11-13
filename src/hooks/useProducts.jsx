@@ -7,6 +7,8 @@ import {
   doc,
   query,
   where,
+  or,
+  orderBy,
 } from "firebase/firestore";
 import { DB } from "../firebase/config";
 
@@ -88,4 +90,29 @@ export const useAllProductsByFilter = (
       });
   }, [collectionName, fieldToFilter, dataCategory]);
   return { products, loading, error, dataFilter };
+};
+
+export const useAllCategories = () => {
+  const [categories, setCategories] = useState([]);
+  const [error, setError] = useState(false);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const collectionRef = collection(DB, "products");
+    getDocs(collectionRef)
+      .then((res) => {
+        const result = res.docs.map((doc) => doc.data().category);
+
+        //new set es un objeto que almacena los VALORES UNICOS de un array
+        //new Set(result): Elimina las categorías duplicadas y
+        //[...new Set(...)]: Convierte el Set en un array para poder trabajar fácilmente con él.
+        const categoriasUnicas = [...new Set(result)];
+
+        setCategories(categoriasUnicas);
+      })
+      .catch(() => setError(true))
+      .finally(() => setLoading(false));
+  }, []);
+  // console.log("categories", categories);
+  return { categories, error, loading };
 };

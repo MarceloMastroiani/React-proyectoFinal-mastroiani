@@ -1,4 +1,5 @@
 body {
-  background-color: rgb(35, 35, 35);
+  background-color: hsla(0, 0%, 8%, 1);
+
   overflow: auto;
 }
