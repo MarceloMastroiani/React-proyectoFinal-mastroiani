@@ -16,7 +16,7 @@ export const NavBarComponent = () => {
         <a className="botonLink" href="/home">
           Inicio
         </a>
-        <a className="botonLink" href="/home">
+        <a className="botonLink" href="/products">
           Productos
         </a>
       </Nav>
