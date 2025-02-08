@@ -1,11 +1,14 @@
 import { React, useState, useContext } from "react";
 import { ItemListContainer } from "../components";
 import { SideBarComponent } from "../components";
-import { ProductsContext } from "../context/ProductContext";
+import { useAllProducts } from "../hooks/useProducts";
 
 export const Products = () => {
   const [dataCategory, setDataCategory] = useState("all");
-  const { products } = useContext(ProductsContext);
+  const { products } = useAllProducts();
+  console.log("products pr", products);
+
+  // const { products } = useContext(ProductsContext);
 
   //Estafuncion recibe los datos del select y se guarda en dataCategory para poder usarlo en el componente ItemListContainer
   const sendFilters = (data) => {

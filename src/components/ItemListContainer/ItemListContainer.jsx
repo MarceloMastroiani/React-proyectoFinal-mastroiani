@@ -6,6 +6,8 @@ import { LoaderComponent } from "../LoaderComponent";
 import { useAllProductsByFilter } from "../../hooks/useProducts";
 
 export const ItemListContainer = ({ dataCategory, product }) => {
+  // console.log("dataCategory", dataCategory);
+  // console.log("product", product);
   const {
     products,
     loading,

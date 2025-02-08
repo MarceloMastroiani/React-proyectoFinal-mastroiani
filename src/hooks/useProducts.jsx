@@ -7,15 +7,21 @@ import {
   doc,
   query,
   where,
-  or,
-  orderBy,
 } from "firebase/firestore";
 import { DB } from "../firebase/config";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchProducts } from "../redux/reducers/productSlice";
 
 export const useAllProducts = (limit) => {
-  const [products, setProducts] = useState([]);
+  //ESTE CUSTON HOOKS SE USA PARA TRAER TODOS LOS PRODUCTOS DE LA BASE DE DATOS Y SE GUARDAN EN EL ESTADO DE REDUX
+
+  //traer los productos del estado de redux
+  const products = useSelector((state) => state.products);
+  //se usa para mandar la acción al reducer y actualizar el estado
+  const dispatch = useDispatch();
+
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const collectionRef = collection(DB, "products");
@@ -25,12 +31,14 @@ export const useAllProducts = (limit) => {
           id: doc.id,
           ...doc.data(),
         }));
-        setProducts(data);
+        //REDUX
+        dispatch(fetchProducts(data));
       })
-      .catch(() => setError(true))
+      .catch((err) => setError(err.message))
       .finally(() => setLoading(false));
   }, []);
 
+  // console.log("products redux", products);
   return { products, loading, error };
 };
 

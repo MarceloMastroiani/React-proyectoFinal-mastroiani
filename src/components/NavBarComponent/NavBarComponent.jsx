@@ -1,6 +1,6 @@
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import CartWidgetComponent from "../CartWidgetComponent/CartWidgetComponent";
+// import CartWidgetComponent from "../CartWidgetComponent/CartWidgetComponent";
 import "./NavBar.css";
 
 export const NavBarComponent = () => {
@@ -22,9 +22,9 @@ export const NavBarComponent = () => {
       </Nav>
 
       {/* Link to cart */}
-      <Nav.Link className="Link" href="/cart">
+      {/* <Nav.Link className="Link" href="/cart">
         <CartWidgetComponent />
-      </Nav.Link>
+      </Nav.Link> */}
     </div>
   );
 };

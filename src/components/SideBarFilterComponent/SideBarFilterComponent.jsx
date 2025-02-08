@@ -28,15 +28,13 @@ export const SideBarComponent = ({ sendFilters }) => {
         {/* Ahota se puede agregar las categorias que se deseen, estas se mostrarán en el select */}
         <select name="categorys" {...register("categorys")}>
           <option value="all">Categoría</option>
-          {error ? (
-            <div>Hubo un error</div>
-          ) : (
-            categories.map((category) => (
-              <option value={category} key={category}>
-                {`${category}`}
-              </option>
-            ))
-          )}
+          {error
+            ? console.log("Error al cargar las categorias")
+            : categories.map((category) => (
+                <option value={category} key={category}>
+                  {`${category}`}
+                </option>
+              ))}
         </select>
       </div>
       <button className="botonFiltro">Filtrar</button>

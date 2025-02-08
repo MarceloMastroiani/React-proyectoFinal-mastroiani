@@ -2,12 +2,7 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
 
-import { CartContext } from "../../context";
-
-
-
 const CartWidgetComponent = () => {
-
   const { itemCount } = React.useContext(CartContext);
 
   const iconStyles = {
@@ -22,4 +17,4 @@ const CartWidgetComponent = () => {
   );
 };
 
-export default CartWidgetComponent;
+// export default CartWidgetComponent;
